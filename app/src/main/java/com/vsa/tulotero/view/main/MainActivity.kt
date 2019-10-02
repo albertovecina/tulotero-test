@@ -1,9 +1,10 @@
-package com.vsa.tulotero
+package com.vsa.tulotero.view.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.vsa.tulotero.R
+import com.vsa.tulotero.view.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
