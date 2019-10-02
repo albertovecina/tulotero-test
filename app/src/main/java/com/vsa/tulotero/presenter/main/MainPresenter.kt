@@ -10,4 +10,6 @@ abstract class MainPresenter : Presenter<MainView>() {
 
     abstract fun onCreate()
 
+    abstract fun onFilterChange(filter: String)
+
 }

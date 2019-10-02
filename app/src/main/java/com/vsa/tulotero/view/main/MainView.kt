@@ -11,6 +11,12 @@ interface MainView {
 
     fun hideProgress()
 
-    fun showLotteryBooths(dataProvider: LotteryBoothDataProvider)
+    fun showError(message: String)
+
+    fun showLotteryBoothsList(dataProvider: LotteryBoothDataProvider)
+
+    fun showListSize(size: String)
+
+    fun updateLotteryBoothsList()
 
 }
