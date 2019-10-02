@@ -16,7 +16,7 @@ object LotteryBoothDataMapper {
             administracion?.nombre ?: "",
             administracion?.poblacion ?: "",
             administracion?.provincia ?: "",
-            administracion?.urlFoto ?: ""
+            administracion?.urlFoto
         )
 
 }

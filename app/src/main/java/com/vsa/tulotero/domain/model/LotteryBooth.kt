@@ -7,5 +7,5 @@ data class LotteryBooth(
     var name: String = "",
     var city: String = "",
     var region: String = "",
-    var imageUrl: String = ""
+    var imageUrl: String? = null
 )
