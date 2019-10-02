@@ -1,5 +1,6 @@
 package com.vsa.tulotero.di.module
 
+import com.vsa.tulotero.di.PerActivity
 import com.vsa.tulotero.presenter.main.MainPresenter
 import com.vsa.tulotero.presenter.main.MainPresenterImpl
 import dagger.Module
@@ -11,6 +12,7 @@ import dagger.Provides
 @Module
 class ActivityModule {
 
+    @PerActivity
     @Provides
     fun providesMainPresenter(presenter: MainPresenterImpl): MainPresenter = presenter
 
