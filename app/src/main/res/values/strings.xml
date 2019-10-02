@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TuLotero</string>
+    <string name="empty_list_message">No se han encontrado Administraciones con esa descripción</string>
 </resources>

@@ -20,7 +20,15 @@ class MainPresenterImpl @Inject constructor(private val getLotteryBoothsUseCase:
     }
 
     override fun onFilterChange(filter: String) {
-        filterLotteryBoothsList(filter)
+        filteredLotteryBoothList = filterLotteryBoothsList(filter)
+
+        if (filteredLotteryBoothList.isEmpty())
+            view.showEmptyListMessage()
+        else
+            view.hideEmptyListMessage()
+
+        view.showListSize(filteredLotteryBoothList.size.toString())
+        view.updateLotteryBoothsList()
     }
 
     private fun requestLotteryBooths() {
@@ -68,8 +76,8 @@ class MainPresenterImpl @Inject constructor(private val getLotteryBoothsUseCase:
 
     }
 
-    private fun filterLotteryBoothsList(filter: String) {
-        filteredLotteryBoothList = if (filter.isNullOrEmpty())
+    private fun filterLotteryBoothsList(filter: String): List<LotteryBooth> =
+        if (filter.isNullOrEmpty())
             lotteryBoothsList
         else
             lotteryBoothsList.filter {
@@ -77,8 +85,5 @@ class MainPresenterImpl @Inject constructor(private val getLotteryBoothsUseCase:
                         || it.city.contains(filter, true)
                         || it.region.contains(filter, true)
             }
-        view.showListSize(filteredLotteryBoothList.size.toString())
-        view.updateLotteryBoothsList()
-    }
 
 }
