@@ -12,8 +12,15 @@ import javax.inject.Inject
 class MainPresenterImpl @Inject constructor(private val getLotteryBoothsUseCase: GetLotteryBoothsUseCase) :
     MainPresenter() {
 
+    private var lotteryBoothsList: List<LotteryBooth> = ArrayList()
+    private var filteredLotteryBoothList: List<LotteryBooth> = ArrayList()
+
     override fun onCreate() {
         requestLotteryBooths()
+    }
+
+    override fun onFilterChange(filter: String) {
+        filterLotteryBoothsList(filter)
     }
 
     private fun requestLotteryBooths() {
@@ -32,27 +39,46 @@ class MainPresenterImpl @Inject constructor(private val getLotteryBoothsUseCase:
     }
 
     private fun onRequestLotteryBoothsSuccess(lotteryBooths: List<LotteryBooth>) {
-        showLotteryBooths(lotteryBooths)
+        initLotteryBoothsList(lotteryBooths)
     }
 
     private fun onRequestLotteryBoothsFailure(message: String) {
-        println(message)
+        view.showError(message)
     }
 
-    private fun showLotteryBooths(lotteryBooths: List<LotteryBooth>) {
-        view.showLotteryBooths(object : LotteryBoothDataProvider {
+    private fun initLotteryBoothsList(lotteryBooths: List<LotteryBooth>) {
+        lotteryBoothsList = lotteryBooths
+        filteredLotteryBoothList = lotteryBooths
+
+        view.showListSize(lotteryBooths.size.toString())
+
+        view.showLotteryBoothsList(object : LotteryBoothDataProvider {
             override fun getSize(): Int =
-                lotteryBooths.size
+                filteredLotteryBoothList.size
 
+            override fun getImageUrl(position: Int): String? =
+                filteredLotteryBoothList[position].imageUrl
 
-            override fun getImageUrl(position: Int): String? = lotteryBooths[position].imageUrl
+            override fun getName(position: Int): String = filteredLotteryBoothList[position].name
 
-            override fun getName(position: Int): String = lotteryBooths[position].name
-
-            override fun getCity(position: Int): String = lotteryBooths[position].run {
+            override fun getCity(position: Int): String = filteredLotteryBoothList[position].run {
                 "$city ($region)"
             }
         })
+
+    }
+
+    private fun filterLotteryBoothsList(filter: String) {
+        filteredLotteryBoothList = if (filter.isNullOrEmpty())
+            lotteryBoothsList
+        else
+            lotteryBoothsList.filter {
+                it.name.contains(filter, true)
+                        || it.city.contains(filter, true)
+                        || it.region.contains(filter, true)
+            }
+        view.showListSize(filteredLotteryBoothList.size.toString())
+        view.updateLotteryBoothsList()
     }
 
 }
