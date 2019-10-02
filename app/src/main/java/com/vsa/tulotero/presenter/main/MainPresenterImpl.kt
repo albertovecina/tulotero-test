@@ -70,7 +70,10 @@ class MainPresenterImpl @Inject constructor(private val getLotteryBoothsUseCase:
             override fun getName(position: Int): String = filteredLotteryBoothList[position].name
 
             override fun getCity(position: Int): String = filteredLotteryBoothList[position].run {
-                "$city ($region)"
+                if (region.isEmpty())
+                    city
+                else
+                    "$city ($region)"
             }
         })
 

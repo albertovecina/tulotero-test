@@ -15,12 +15,12 @@ interface MainView {
 
     fun showLotteryBoothsList(dataProvider: LotteryBoothDataProvider)
 
+    fun updateLotteryBoothsList()
+
     fun showListSize(size: String)
 
     fun showEmptyListMessage()
 
     fun hideEmptyListMessage()
-
-    fun updateLotteryBoothsList()
 
 }
