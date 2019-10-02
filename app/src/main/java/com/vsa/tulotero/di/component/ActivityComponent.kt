@@ -20,7 +20,7 @@ interface ActivityComponent {
     interface Builder {
 
         @BindsInstance
-        fun context(context: Context):Builder
+        fun context(context: Context): Builder
 
         fun activityModule(activityModule: ActivityModule): Builder
 
