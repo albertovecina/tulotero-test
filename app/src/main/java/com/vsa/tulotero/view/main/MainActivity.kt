@@ -60,10 +60,12 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun showProgress() {
         progressBar.visibility = View.VISIBLE
+        wrapperContent.visibility = View.GONE
     }
 
     override fun hideProgress() {
         progressBar.visibility = View.GONE
+        wrapperContent.visibility = View.VISIBLE
     }
 
     override fun showError(message: String) {
@@ -72,6 +74,10 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun showLotteryBoothsList(dataProvider: LotteryBoothDataProvider) {
         recyclerViewLotteryBooths.adapter = LotteryBoothAdapter(this, dataProvider)
+    }
+
+    override fun updateLotteryBoothsList() {
+        recyclerViewLotteryBooths.adapter?.notifyDataSetChanged()
     }
 
     override fun showListSize(size: String) {
@@ -86,7 +92,4 @@ class MainActivity : BaseActivity(), MainView {
         recyclerViewLotteryBooths.visibility = View.VISIBLE
     }
 
-    override fun updateLotteryBoothsList() {
-        recyclerViewLotteryBooths.adapter?.notifyDataSetChanged()
-    }
 }

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">TuLotero</string>
+    <string name="title_activity_main">Administraciones</string>
     <string name="empty_list_message">No se han encontrado Administraciones con esa descripción</string>
+    <string name="hint_search">Buscar …</string>
 </resources>
