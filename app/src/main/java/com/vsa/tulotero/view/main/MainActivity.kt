@@ -85,11 +85,11 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun showEmptyListMessage() {
-        recyclerViewLotteryBooths.visibility = View.INVISIBLE
+        wrapperEmptyListWarning.visibility = View.VISIBLE
     }
 
     override fun hideEmptyListMessage() {
-        recyclerViewLotteryBooths.visibility = View.VISIBLE
+        wrapperEmptyListWarning.visibility = View.INVISIBLE
     }
 
 }
