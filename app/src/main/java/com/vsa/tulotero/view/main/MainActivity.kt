@@ -78,6 +78,14 @@ class MainActivity : BaseActivity(), MainView {
         textViewItemCount.text = size
     }
 
+    override fun showEmptyListMessage() {
+        recyclerViewLotteryBooths.visibility = View.INVISIBLE
+    }
+
+    override fun hideEmptyListMessage() {
+        recyclerViewLotteryBooths.visibility = View.VISIBLE
+    }
+
     override fun updateLotteryBoothsList() {
         recyclerViewLotteryBooths.adapter?.notifyDataSetChanged()
     }

@@ -17,6 +17,10 @@ interface MainView {
 
     fun showListSize(size: String)
 
+    fun showEmptyListMessage()
+
+    fun hideEmptyListMessage()
+
     fun updateLotteryBoothsList()
 
 }
