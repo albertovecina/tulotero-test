@@ -30,9 +30,10 @@ class LotteryBoothAdapter(
 
     override fun onBindViewHolder(holder: LotteryBoothViewHolder, position: Int) {
         dataProvider.getImageUrl(position)?.run {
-            Picasso.get()
-                .load(this)
-                .into(holder.imageView)
+            if (isNotEmpty())
+                Picasso.get()
+                    .load(this)
+                    .into(holder.imageView)
         }
         holder.textViewName.text = dataProvider.getName(position)
         holder.textViewCity.text = dataProvider.getCity(position)
